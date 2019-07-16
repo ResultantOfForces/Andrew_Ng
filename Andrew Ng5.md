@@ -60,4 +60,50 @@ $
 ## 多项式回归
 如图，在进行函数拟合过程中，可能使用的并不是一条直线，而是其他函数，但是要注意特征的缩放。
 ![多项式回归](5.5PolynomialRegression.JPG)
-## 正则方程
+## 正规方程
+使用正规方程法，不需要进行特征缩放。
+![正规方程](5.6NormalEquation.JPG)
+设有m个训练样本$(x^{(1)},y^{(1)}),...,(x^{(m)},y^{(m)})$；
+n个特征变量
+$$
+x^{(i)}=
+\begin{bmatrix}
+x_0^{(i)} \\
+x_1^{(i)} \\
+\vdots \\
+x_n^{(i)}
+\end{bmatrix}
+\in \mathbb{R}^{n+1}
+$$
+$$
+设计矩阵　X=
+\begin{bmatrix}
+\cdots (x^{(1)})^T \cdots \\
+\cdots (x^{(2)})^T \cdots\\
+\vdots \\
+\cdots (x^{(m)})^T \cdots
+\end{bmatrix}
+　
+y=
+\begin{bmatrix}
+y^{(1)} \\
+y^{(2)} \\
+\vdots \\
+y^{(m)}
+\end{bmatrix}
+\in \mathbb{R}^{m}
+$$
+$\theta=(X^TX)^{-1}X^Ty$
+```
+Octave:
+pinv(x'*x)*x'*y
+注：pinv(x)是x的逆矩阵
+x'是x的转置
+```
+假设有m个训练样本和n个特征变量。</br>
+梯度下降法：</br>
+优点：当特征变量n过大时，仍能很好的工作。</br>
+缺点：需要$\alpha$；需要多次迭代。
+正规方程法：</br>
+优点：不需要$\alpha$；不需要多次迭代。</br>
+缺点：当n大于等于10,000时会变得很慢。
